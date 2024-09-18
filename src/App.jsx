@@ -17,7 +17,7 @@ const App = () => {
 	const [toTemperature, setToTemperature] = useState()
 
 	const [typedCountry, settypedCountry] = useState("")
-	const [showCountry, setShowCountry] = useState(false);	
+	const [showCountry, setShowCountry] = useState("");	
 
 	let toAmount, fromAmount
 	if (amountInFromCurrency) {
@@ -69,8 +69,8 @@ const App = () => {
     setToTemperature(celsius.toFixed(2))
 	}
 
-	function handleSearch() {
-		setShowCountry(true)
+	function writeCountry() {
+		setShowCountry(typedCountry)
 	}
 
 	return (
@@ -79,8 +79,8 @@ const App = () => {
 				<h1>Destination</h1>
 				<input type="text" placeholder="The destination is..."
 				value={typedCountry || ""} onChange={(e) => settypedCountry(e.target.value)} />
-				<button onClick={handleSearch}>Search</button>
-        {showCountry && <div>Destination: {typedCountry}</div>}
+				<div>Destination: {showCountry}</div>
+				<button onClick={writeCountry}>Search</button>
 			</div>
 			<div className="CurrencyExchanger">
 				<h1>Currency exchanger</h1>
